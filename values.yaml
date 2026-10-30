@@ -1,0 +1,26 @@
+replicaCount: 2
+
+image:
+  repository: httpd
+  tag: "2.4"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+
+ingress:
+  enabled: true
+  className: nginx
+  host: a36f53cbf3f1842adbe6faf7031c4ccb-1260811689.ap-south-2.elb.amazonaws.com
+  path: /
+  pathType: Prefix
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 256Mi
